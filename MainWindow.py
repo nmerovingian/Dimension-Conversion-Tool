@@ -394,14 +394,25 @@ class MainWindow(QMainWindow):
         if os.path.exists('Commands.json'):
             with open('Commands.json','r') as json_reader:
                 self.commands = json.load(json_reader)
+            self.input_widgets_dict[0].setText(f"{self.commands['E0f']:.5f}")
+            self.input_widgets_dict[1].setText(f"{self.commands['concT']:.5E}")
+            self.input_widgets_dict[2].setText(f"{self.commands['dElectrode']:.5E}")
+            self.input_widgets_dict[3].setText(f"{self.commands['DX']:.5E}")
+            self.input_widgets_dict[4].setText(f"{self.commands['DA']:.5E}")
+            self.input_widgets_dict[5].setText(f"{self.commands['DB']:.5E}")
+            self.input_widgets_dict[6].setText(f"{self.commands['DC']:.5E}")
 
-        self.input_widgets_dict[0].setText(f"{self.commands['E0f']:.5f}")
-        self.input_widgets_dict[1].setText(f"{self.commands['concT']:.5E}")
-        self.input_widgets_dict[2].setText(f"{self.commands['dElectrode']:.5E}")
-        self.input_widgets_dict[3].setText(f"{self.commands['DX']:.5E}")
-        self.input_widgets_dict[4].setText(f"{self.commands['DA']:.5E}")
-        self.input_widgets_dict[5].setText(f"{self.commands['DB']:.5E}")
-        self.input_widgets_dict[6].setText(f"{self.commands['DC']:.5E}")
+        else:
+            for i in ['E0f','concT','dElectrode','DX','DA','DB','DC']:
+                self.commands[i] = ''
+            self.input_widgets_dict[0].setText(f"{self.commands['E0f']}")
+            self.input_widgets_dict[1].setText(f"{self.commands['concT']}")
+            self.input_widgets_dict[2].setText(f"{self.commands['dElectrode']}")
+            self.input_widgets_dict[3].setText(f"{self.commands['DX']}")
+            self.input_widgets_dict[4].setText(f"{self.commands['DA']}")
+            self.input_widgets_dict[5].setText(f"{self.commands['DB']}")
+            self.input_widgets_dict[6].setText(f"{self.commands['DC']}")
+
 
 if __name__ == '__main__':
 
